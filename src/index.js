@@ -69,22 +69,23 @@ function Menu(props) {
   return (
     <main className="menu">
       <h2>Menu</h2>
-
-      <ul className="pizzas">
-        {props.pizzas.map((pizza) => {
-          return (
-            <li>
-              <Pizza
-                key={pizza.name}
-                name={pizza.name}
-                ingredients={pizza.ingredients}
-                photoName={pizza.photoName}
-                price={pizza.price}
-              />
-            </li>
-          );
-        })}
-      </ul>
+      {[props.pizzas].length > 0 && (
+        <ul className="pizzas">
+          {props.pizzas.map((pizza) => {
+            return (
+              <li>
+                <Pizza
+                  key={pizza.name}
+                  name={pizza.name}
+                  ingredients={pizza.ingredients}
+                  photoName={pizza.photoName}
+                  price={pizza.price}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </main>
   );
 }
@@ -105,12 +106,26 @@ function Pizza(props) {
 function Footer() {
   const hour = new Date().getHours();
   const openHour = 13;
-  const closeHour = 22;
+  const closeHour = 23;
 
   const isOpen = hour > openHour && hour < closeHour;
   return (
     <footer className="footer">
-      {isOpen ? "We're currently open" : "We're closed"}
+      {isOpen && (
+        <div className="order">
+          <p>
+            "We're open until {closeHour}:00". Come visit us or order online.
+          </p>
+          <button className="btn">Order</button>
+        </div>
+      )}
+      {isOpen || (
+        <div className="order">
+          <p>
+            We're closed. Working hours from {openHour}:00 to {closeHour}:00
+          </p>
+        </div>
+      )}
     </footer>
   );
 }
