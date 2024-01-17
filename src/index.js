@@ -73,9 +73,8 @@ function Menu(props) {
         <ul className="pizzas">
           {props.pizzas.map((pizza) => {
             return (
-              <li>
+              <li key={pizza.name}>
                 <Pizza
-                  key={pizza.name}
                   name={pizza.name}
                   ingredients={pizza.ingredients}
                   photoName={pizza.photoName}
@@ -106,10 +105,11 @@ function Pizza(props) {
 function Footer() {
   const hour = new Date().getHours();
   const openHour = 13;
-  const closeHour = 23;
+  const closeHour = 18;
 
   const isOpen = hour > openHour && hour < closeHour;
-  return (
+
+  if (isOpen) {
     <footer className="footer">
       {isOpen && (
         <div className="order">
@@ -119,13 +119,16 @@ function Footer() {
           <button className="btn">Order</button>
         </div>
       )}
-      {isOpen || (
-        <div className="order">
-          <p>
-            We're closed. Working hours from {openHour}:00 to {closeHour}:00
-          </p>
-        </div>
-      )}
+    </footer>;
+  }
+
+  return (
+    <footer className="footer">
+      <div className="order">
+        <p>
+          We're closed. Working hours from {openHour}:00 to {closeHour}:00
+        </p>
+      </div>
     </footer>
   );
 }
