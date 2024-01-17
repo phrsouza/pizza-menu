@@ -65,21 +65,16 @@ function Header() {
   );
 }
 
-function Menu(props) {
+function Menu({ pizzas }) {
   return (
     <main className="menu">
       <h2>Menu</h2>
-      {[props.pizzas].length > 0 && (
+      {[pizzas].length > 0 && (
         <ul className="pizzas">
-          {props.pizzas.map((pizza) => {
+          {pizzas.map((pizza) => {
             return (
               <li key={pizza.name}>
-                <Pizza
-                  name={pizza.name}
-                  ingredients={pizza.ingredients}
-                  photoName={pizza.photoName}
-                  price={pizza.price}
-                />
+                <Pizza pizza={pizza} />
               </li>
             );
           })}
@@ -89,14 +84,14 @@ function Menu(props) {
   );
 }
 
-function Pizza(props) {
+function Pizza({ pizza }) {
   return (
     <div className="pizza">
-      <img src={props.photoName} alt={props.name} />
+      <img src={pizza.photoName} alt={pizza.name} />
       <div>
-        <h3>{props.name}</h3>
-        <p>ingredients: {props.ingredients}</p>
-        <span>{props.price}</span>
+        <h3>{pizza.name}</h3>
+        <p>ingredients: {pizza.ingredients}</p>
+        <span>{pizza.price}</span>
       </div>
     </div>
   );
@@ -105,7 +100,7 @@ function Pizza(props) {
 function Footer() {
   const hour = new Date().getHours();
   const openHour = 13;
-  const closeHour = 23;
+  const closeHour = 22;
 
   const isOpen = hour > openHour && hour < closeHour;
 
@@ -132,23 +127,20 @@ function Footer() {
   );
 }
 
-function OpenOrder(props) {
+function OpenOrder({ closeHour }) {
   return (
     <div className="order">
-      <p>
-        We're open until {props.closeHour}:00. Come visit us or order online.
-      </p>
+      <p>We're open until {closeHour}:00. Come visit us or order online.</p>
       <button className="btn">Order</button>
     </div>
   );
 }
 
-function ClosedOrder(props) {
+function ClosedOrder({ openHour, closeHour }) {
   return (
     <div className="order">
       <p>
-        We're closed. Working hours from {props.openHour}:00 to{" "}
-        {props.closeHour}:00
+        We're closed. Working hours from {openHour}:00 to {closeHour}:00
       </p>
     </div>
   );
