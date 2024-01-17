@@ -69,10 +69,32 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name="Pizza spinaci"
+        ingredients="foo, bar, zaz"
+        photoName="pizzas/spinaci.jpg"
+        price={10}
+      />
+      <Pizza
+        name="Pizza spinaci"
+        ingredients="foo, bar, zaz"
+        photoName="pizzas/spinaci.jpg"
+        price={10}
+      />
     </main>
+  );
+}
+
+function Pizza(props) {
+  return (
+    <div className="pizza">
+      <img src={props.photoName} alt={props.name} />
+      <div>
+        <h3>{props.name}</h3>
+        <p>ingredients: {props.ingredients}</p>
+        <span>{props.price}</span>
+      </div>
+    </div>
   );
 }
 
@@ -86,16 +108,6 @@ function Footer() {
     <footer className="footer">
       {isOpen ? "We're currently open" : "We're closed"}
     </footer>
-  );
-}
-
-function Pizza() {
-  return (
-    <div className="pizza">
-      <h3>Pizza name</h3>
-      <p>ingredients: 1, 2, 3</p>
-      <img src="pizzas/spinaci.jpg" alt="Pizza spinaci" />
-    </div>
   );
 }
 
