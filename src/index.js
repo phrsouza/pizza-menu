@@ -51,7 +51,7 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <Menu />
+      <Menu pizzas={pizzaData} />
       <Footer />
     </div>
   );
@@ -65,22 +65,26 @@ function Header() {
   );
 }
 
-function Menu() {
+function Menu(props) {
   return (
     <main className="menu">
       <h2>Menu</h2>
-      <Pizza
-        name="Pizza spinaci"
-        ingredients="foo, bar, zaz"
-        photoName="pizzas/spinaci.jpg"
-        price={10}
-      />
-      <Pizza
-        name="Pizza spinaci"
-        ingredients="foo, bar, zaz"
-        photoName="pizzas/spinaci.jpg"
-        price={10}
-      />
+
+      <ul className="pizzas">
+        {props.pizzas.map((pizza) => {
+          return (
+            <li>
+              <Pizza
+                key={pizza.name}
+                name={pizza.name}
+                ingredients={pizza.ingredients}
+                photoName={pizza.photoName}
+                price={pizza.price}
+              />
+            </li>
+          );
+        })}
+      </ul>
     </main>
   );
 }
