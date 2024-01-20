@@ -69,16 +69,24 @@ function Menu({ pizzas }) {
   return (
     <main className="menu">
       <h2>Menu</h2>
-      {[pizzas].length > 0 && (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => {
-            return (
-              <li key={pizza.name}>
-                <Pizza pizza={pizza} />
-              </li>
-            );
-          })}
-        </ul>
+      {[pizzas].length > 0 ? (
+        <>
+          <p>
+            Authentic Italian cusine. Creative dishes to choose all from out
+            stone oven, all organic, all delicious.
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => {
+              return (
+                <li key={pizza.name}>
+                  <Pizza pizza={pizza} />
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      ) : (
+        <p>We're still working on our menu. Please come back later</p>
       )}
     </main>
   );
