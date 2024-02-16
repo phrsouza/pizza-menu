@@ -4,12 +4,6 @@
 
 This repository contains a sample pizza menu website built with React.
 
-## Features
-
-- Increment and decrement date
-- Change step value for increments and decrements
-- Reset inputs to the default values
-
 ## Local Setup
 
 To set up the project locally, follow these steps:
@@ -42,7 +36,9 @@ localhost:3000
 
 ## Deploy
 
-This project is deployed to https://date-counter-266um5nby-pedro-souzas-projects-608e0ba6.vercel.app/ whenever the default branch is updated.
+This project is deployed to https://pizza-menu-labta1dy8-pedro-souzas-projects-608e0ba6.vercel.app/ whenever the default branch is updated.
+
+![image](https://github.com/phrsouza/pizza-menu/assets/2446492/05234c89-b82d-4988-a938-a1f6e9b6bf88)
 
 ## License
 
